@@ -25,7 +25,7 @@ public class Console {
     }
     
     private void sendGet() throws Exception {
-        String requestUri1 = String.format("http://www.etracker.cc/bulksms/send?user=%1$s&pass=%2$s&type=%3$s&to=%4$s&from=%5$s&text=%6$s&servid=%7$s",
+        String requestUri1 = String.format("https://www.etracker.cc/bulksms/send?user=%1$s&pass=%2$s&type=%3$s&to=%4$s&from=%5$s&text=%6$s&servid=%7$s",
                     "username",
                     "password",
                     "0",
@@ -59,7 +59,7 @@ public class Console {
         
         HttpRequest request = HttpRequest.newBuilder()
                 .POST(HttpRequest.BodyPublishers.ofString(json))
-                .uri(URI.create("http://www.etracker.cc/bulksms/send"))
+                .uri(URI.create("https://www.etracker.cc/bulksms/send"))
                 .header("Content-Type", "application/json")
                 .build();
 
