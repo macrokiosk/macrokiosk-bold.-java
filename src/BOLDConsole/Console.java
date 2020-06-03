@@ -18,7 +18,7 @@ public class Console {
         System.out.println("Send HTTP GET request");
         obj.sendGet();
 
-        //SENDING SMS VIA REST HTTP GET
+        //SENDING SMS VIA SOAP WEB SERVICE
         System.out.println("Send HTTP POST request");
         obj.sendPost();
                 
