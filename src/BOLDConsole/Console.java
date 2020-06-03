@@ -16,15 +16,19 @@ public class Console {
         
         //SENDING SMS VIA REST HTTP GET
         System.out.println("SENDING SMS VIA REST HTTP GET");
-        obj.sendGet();
+        obj.sendSMSGet();
 
         //SENDING SMS VIA REST HTTP POST
         System.out.println("SENDING SMS VIA REST HTTP POST");
-        obj.sendPost();
+        obj.sendSMSPost();
+        
+        //SENDING EMAIL VIA HTTP POST
+        System.out.println("SENDING EMAIL VIA HTTP POST");
+        obj.sendEmailPost();
                 
     }
     
-    private void sendGet() throws Exception {
+    private void sendSMSGet() throws Exception {
         String requestUri1 = String.format("https://www.etracker.cc/bulksms/send?user=%1$s&pass=%2$s&type=%3$s&to=%4$s&from=%5$s&text=%6$s&servid=%7$s",
                     "username",
                     "password",
@@ -46,7 +50,7 @@ public class Console {
 
     }
 
-    private void sendPost() throws Exception {
+    private void sendSMSPost() throws Exception {
 
         //Build the request json
         String json = "{\"user\":\"username\"," +
@@ -68,5 +72,31 @@ public class Console {
         System.out.println(response.statusCode());
         System.out.println(response.body());
 
-    }    
+    } 
+    
+    private void sendEmailPost() throws Exception {
+        
+        //Build the request json
+        String json = "{\"to\":[{\"name\":\"Recipient\",\"email\":\"Recipient@macrokiosk.com\"}],"+ 
+            "\"sender\":{\"name\":\"Sender\",\"email\":\"Sender@macrokiosk.com\"},"+
+            "\"htmlContent\":\"Email Test Content\"," +
+            "\"subject\":\"Email Test Subject\"," +
+            "\"replyTo\":{\"name\":\"Kit\",\"email\":\"hunkit@macrokiosk.com\"}," +
+            "\"unsubscribeLink\":1," +
+            "\"username\":\"username\"," +
+            "\"pass\":\"password\"," +
+            "\"serviceId\":\"MES01\","+
+            "\"IsHashed\":false}";
+        
+        HttpRequest request = HttpRequest.newBuilder()
+                .POST(HttpRequest.BodyPublishers.ofString(json))
+                .uri(URI.create("https://www.etracker.cc/BulkEmail/Send"))
+                .header("Content-Type", "application/json")
+                .build();
+
+        HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+
+        System.out.println(response.statusCode());
+        System.out.println(response.body());
+    }
 }
