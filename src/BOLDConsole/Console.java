@@ -15,11 +15,11 @@ public class Console {
         Console obj = new Console();
         
         //SENDING SMS VIA REST HTTP GET
-        System.out.println("Send HTTP GET request");
+        System.out.println("SENDING SMS VIA REST HTTP GET");
         obj.sendGet();
 
         //SENDING SMS VIA REST HTTP POST
-        System.out.println("Send HTTP POST request");
+        System.out.println("SENDING SMS VIA REST HTTP POST");
         obj.sendPost();
                 
     }
