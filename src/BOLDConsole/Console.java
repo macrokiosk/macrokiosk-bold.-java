@@ -81,11 +81,11 @@ public class Console {
             "\"sender\":{\"name\":\"Sender\",\"email\":\"Sender@macrokiosk.com\"},"+
             "\"htmlContent\":\"Email Test Content\"," +
             "\"subject\":\"Email Test Subject\"," +
-            "\"replyTo\":{\"name\":\"Kit\",\"email\":\"hunkit@macrokiosk.com\"}," +
+            "\"replyTo\":{\"name\":\"ReplyTo\",\"email\":\"ReplyTo@macrokiosk.com\"}," +
             "\"unsubscribeLink\":1," +
             "\"username\":\"username\"," +
             "\"pass\":\"password\"," +
-            "\"serviceId\":\"MES01\","+
+            "\"serviceId\":\"serviceId\","+
             "\"IsHashed\":false}";
         
         HttpRequest request = HttpRequest.newBuilder()
